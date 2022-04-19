@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  HW-2
+
+  Created by Ramir Amrayev on 4/19/22.
+  
+*/
+
+"My Feed" = "Мой канал";
+"My Friends" = "Мои друзья";
+"My Pins" = "Мои метки";
+"My Profile" = "Мой профиль";
+"Add New Friend" = "Добавить Нового Друга";
+"Add New Contacts" = "Добавить Новые Контакты";
+"You Might Know Them" = "Вы Можете Знать Их";
+"ADD" = "Добавить";
+"ADDED" = "Добавлен";
+"From Contacts" = "Из Контактов";
+"By Username" = "По Имени Пользователя";
+"By Phone Number" = "По Сотовому Номеру";
+"Friends" = "Друзей";
+"Back" = "Назад";

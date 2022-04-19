@@ -23,14 +23,31 @@ class MyFriendsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Make the navigation bar background clear
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         layoutUI()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Restore the navigation bar to default
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
     
     private func initUI() {
-        title = "My Friends"
+        title = NSLocalizedString("My Friends", comment: "")
         view.backgroundColor = .secondarySystemBackground
         
         initNavBarButtons()
@@ -77,7 +94,7 @@ class MyFriendsViewController: UIViewController {
     
     private func setBackBarButtonItem() {
         let backBarBtnItem = UIBarButtonItem()
-            backBarBtnItem.title = "Back"
+            backBarBtnItem.title = NSLocalizedString("Back", comment: "")
             navigationItem.backBarButtonItem = backBarBtnItem
     }
     

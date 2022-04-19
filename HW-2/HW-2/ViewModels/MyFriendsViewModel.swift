@@ -18,7 +18,7 @@ class MyFriendsViewModel {
         CollectionUser(fullName: "Courtney Henry", profession: "Taxi Driver", image: UIImage(named: "courtney")!, status: NetworkStatus.recentlyOnline),
         CollectionUser(fullName: "Jim Warren", profession: "Company CEO", image: UIImage(named: "jim")!, status: NetworkStatus.offline),
         CollectionUser(fullName: "Alexandria Ocasio", profession: "Politician", image: UIImage(named: "alexandria")!, status: NetworkStatus.recentlyOnline),
-        CollectionUser(fullName: "Julien august", profession: "Waitress", image: UIImage(named: "julien")!, status: NetworkStatus.online),
+        CollectionUser(fullName: "Julien August", profession: "Waitress", image: UIImage(named: "julien")!, status: NetworkStatus.online),
       ]
     }()
 }

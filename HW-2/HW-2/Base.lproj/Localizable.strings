@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  HW-2
+
+  Created by Ramir Amrayev on 4/19/22.
+  
+*/
+
+"My Feed" = "My Feed";
+"My Friends" = "My Friends";
+"My Pins" = "My Pins";
+"My Profile" = "My Profile";
+"Add New Friend" = "Add New Friend";
+"Add New Contacts" = "Add New Contacts";
+"You Might Know Them" = "You Might Know Them";
+"ADD" = "ADD";
+"ADDED" = "ADDED";
+"From Contacts" = "From Contacts";
+"By Username" = "By Username";
+"By Phone Number" = "By Phone Number";
+"Friends" = "Friends";
+"Back" = "Back";

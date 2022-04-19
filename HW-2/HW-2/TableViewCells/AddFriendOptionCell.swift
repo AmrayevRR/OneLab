@@ -9,12 +9,6 @@ import Foundation
 
 import UIKit
 
-
-struct AddFriendOption {
-    let systemImageName: String
-    let title: String
-}
-
 typealias AddFriendOptionCellConfigurator = TableCellConfigurator<AddFriendOptionCell, AddFriendOption>
 
 class AddFriendOptionCell: UITableViewCell, ConfigurableCell {
@@ -29,7 +23,7 @@ class AddFriendOptionCell: UITableViewCell, ConfigurableCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
-        label.textColor = .link
+        label.textColor = UIColor(named: "addFriendOptinTextColor")
         return label
     }()
     

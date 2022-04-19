@@ -25,12 +25,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myFeedVC = UINavigationController(rootViewController: MyFeedViewController())
         let myFriendsVC = UINavigationController(rootViewController: MyFriendsViewController())
         let myPinsVC = UINavigationController(rootViewController: MyPinsViewController())
-        let myProfileVC = UINavigationController(rootViewController: MyFriendsViewController())
+        let myProfileVC = UINavigationController(rootViewController: MyProfileViewController())
         
-        myFeedVC.title = "My Feed"
-        myFriendsVC.title = "My Friend"
-        myPinsVC.title = "My Pins"
-        myProfileVC.title = "My Profile"
+        myFeedVC.title = NSLocalizedString("My Feed", comment: "")
+        myFriendsVC.title = NSLocalizedString("My Friends", comment: "")
+        myPinsVC.title = NSLocalizedString("My Pins", comment: "")
+        myProfileVC.title = NSLocalizedString("My Profile", comment: "")
         
         
         tabBarVC.setViewControllers([myFeedVC, myFriendsVC, myPinsVC, myProfileVC], animated: false)

@@ -19,7 +19,6 @@ class CollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "house")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .yellow
         return imageView
     }()
     
@@ -31,7 +30,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     private let statusView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
         return view
     }()
     
@@ -45,7 +43,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         
         contentView.addSubview(imageView)
         contentView.addSubview(fullNameLabel)
@@ -81,7 +79,7 @@ class CollectionViewCell: UICollectionViewCell {
             statusView.backgroundColor = .systemYellow
         }
         else {
-            statusView.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.18)
+            statusView.backgroundColor = .systemGray4
         }
     }
     

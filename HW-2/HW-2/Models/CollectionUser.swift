@@ -13,11 +13,4 @@ struct CollectionUser {
     var profession: String
     var image: UIImage
     var status: NetworkStatus
-    
-    init(fullName: String, profession: String, image: UIImage, status: NetworkStatus) {
-        self.fullName = fullName
-        self.profession = profession
-        self.image = image
-        self.status = status
-    }
 }

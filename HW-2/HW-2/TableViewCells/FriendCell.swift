@@ -8,13 +8,6 @@
 import Foundation
 import UIKit
 
-struct Friend {
-    let imageName: String
-    let username: String
-    let friendAmount: Int
-    let isAdded: Bool
-}
-
 typealias FriendCellConfigurator = TableCellConfigurator<FriendCell, Friend>
 
 class FriendCell: UITableViewCell, ConfigurableCell {
@@ -47,20 +40,21 @@ class FriendCell: UITableViewCell, ConfigurableCell {
     private lazy var verticalStack: UIStackView = {
        let stackView = UIStackView(arrangedSubviews: [usernameLabel, friendsAmountLabel])
         stackView.axis = .vertical
-        stackView.spacing = -8
+        stackView.spacing = -10
         stackView.distribution = .fillEqually
         return stackView
     }()
     
     private let addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("ADD", for: .normal)
-        button.setTitle("ADDED", for: .disabled)
+        button.setTitle(NSLocalizedString("ADD", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("ADDED", comment: ""), for: .disabled)
         button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .disabled)
         
         button.setInsets(forContentPadding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), imageTitlePadding: 4)
         button.layer.borderWidth = 1
-        button.layer.borderColor = CGColor(red: 57/255, green: 122/255, blue: 246/255, alpha: 1)
+        button.layer.borderColor = UIColor.link.cgColor
         
         return button
     }()
@@ -68,8 +62,8 @@ class FriendCell: UITableViewCell, ConfigurableCell {
     private let statusView: UIView = {
        let view = UIView()
         view.backgroundColor = .gray
-        view.layer.borderWidth = 1
-        view.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.systemBackground.cgColor
         return view
     }()
     
@@ -100,53 +94,40 @@ class FriendCell: UITableViewCell, ConfigurableCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        layoutFriendImageView()
-//        layoutVerticalStackView()
+        layoutMainStack()
         layoutButton()
-        
-        mainStack.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(12)
-//            $0.trailing.equalToSuperview().inset(12)
-            $0.top.equalToSuperview().inset(margin)
-            $0.bottom.equalToSuperview().inset(margin)
-            $0.width.equalToSuperview().multipliedBy(0.7)
-        }
-        
-        imageStatusView.snp.makeConstraints {
-            $0.size.equalTo(imageWidth)
-        }
-        
-        friendImageView.snp.makeConstraints {
-            $0.size.equalToSuperview()
-        }
-        friendImageView.layer.cornerRadius = CGFloat(imageWidth/2)
-        
-        statusView.snp.makeConstraints {
-            $0.size.equalToSuperview().dividedBy(4)
-            $0.bottom.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        statusView.layer.cornerRadius = statusView.layer.frame.width/2
     }
     
     func configure(data: Friend) {
         friendImageView.image = UIImage(named: data.imageName)
         usernameLabel.text = data.username
-        friendsAmountLabel.text = "\(data.friendAmount) Friends"
+        friendsAmountLabel.text = amountToString(amount: data.friendAmount)
         addButton.isEnabled = !data.isAdded
         
         if (data.isAdded) {
-            addButton.layer.borderColor = CGColor(red: 191/255, green: 191/255, blue: 191/255, alpha: 1)
+            addButton.layer.borderColor = UIColor.lightGray.cgColor
         }
         else {
-            addButton.layer.borderColor = CGColor(red: 57/255, green: 122/255, blue: 246/255, alpha: 1)
+            addButton.layer.borderColor = UIColor.link.cgColor
+        }
+        
+        if data.status == NetworkStatus.online {
+            statusView.backgroundColor = .systemGreen
+        }
+        else if data.status == NetworkStatus.recentlyOnline {
+            statusView.backgroundColor = .systemYellow
+        }
+        else {
+            statusView.backgroundColor = .systemGray4
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        accessoryType = .none
+    }
+    
     private func layoutUI() {
-//        contentView.addSubview(friendImageView)
-//        contentView.addSubview(usernameLabel)
-//        contentView.addSubview(verticalStack)
         contentView.addSubview(addButton)
         contentView.addSubview(mainStack)
         
@@ -156,36 +137,28 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        accessoryType = .none
-    }
-    
-    private func layoutFriendImageView() {
-        friendImageView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(10)
-            $0.centerY.equalToSuperview()
+    private func layoutMainStack() {
+        mainStack.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(12)
+            $0.top.equalToSuperview().inset(margin)
+            $0.bottom.equalToSuperview().inset(margin)
+            $0.width.equalToSuperview().multipliedBy(0.7)
+        }
+        
+        imageStatusView.snp.makeConstraints {
             $0.size.equalTo(imageWidth)
         }
-        
+        friendImageView.snp.makeConstraints {
+            $0.size.equalToSuperview()
+        }
         friendImageView.layer.cornerRadius = CGFloat(imageWidth/2)
-    }
-    
-    private func layoutVerticalStackView() {
-        verticalStack.snp.makeConstraints {
-            $0.leading.equalTo(friendImageView.snp.trailing).offset(8)
-            $0.width.equalToSuperview().multipliedBy(0.5)
-            $0.centerY.equalToSuperview()
-        }
-        verticalStack.backgroundColor = .blue
         
-        usernameLabel.snp.makeConstraints {
-            $0.width.equalToSuperview()
+        statusView.snp.makeConstraints {
+            $0.size.equalToSuperview().dividedBy(3)
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
-        friendsAmountLabel.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.top.equalTo(usernameLabel.snp.bottom)
-        }
+        statusView.layer.cornerRadius = statusView.layer.frame.width/2
     }
     
     private func layoutButton() {
@@ -195,24 +168,16 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         }
         addButton.layer.cornerRadius = addButton.layer.frame.height/2
     }
-}
-
-extension UIButton {
-    func setInsets(
-        forContentPadding contentPadding: UIEdgeInsets,
-        imageTitlePadding: CGFloat
-    ) {
-        self.contentEdgeInsets = UIEdgeInsets(
-            top: contentPadding.top,
-            left: contentPadding.left,
-            bottom: contentPadding.bottom,
-            right: contentPadding.right + imageTitlePadding
-        )
-        self.titleEdgeInsets = UIEdgeInsets(
-            top: 0,
-            left: imageTitlePadding,
-            bottom: 0,
-            right: -imageTitlePadding
-        )
+    
+    private func amountToString(amount: Int) -> String {
+        var string: String
+        if amount < 2000 {
+            string = "\(amount)"
+        }
+        else {
+            string = "\(Double(amount)/1000.0)K"
+        }
+        string += " \(NSLocalizedString("Friends", comment: ""))"
+        return string
     }
 }

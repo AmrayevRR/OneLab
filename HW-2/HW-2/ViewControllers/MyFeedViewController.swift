@@ -12,8 +12,8 @@ class MyFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "My Feed"
-        view.backgroundColor = .red
+        title = NSLocalizedString("My Feed", comment: "")
+        view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
     }
 

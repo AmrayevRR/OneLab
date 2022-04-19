@@ -12,8 +12,8 @@ class MyPinsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "My Pins"
-        view.backgroundColor = .green
+        title = NSLocalizedString("My Pins", comment: "")
+        view.backgroundColor = .systemBackground
         // Do any additional setup after loading the view.
     }
     
