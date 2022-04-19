@@ -1,5 +1,5 @@
 //
-//  UIButtonExtension.swift
+//  AddButton.swift
 //  HW-2
 //
 //  Created by Ramir Amrayev on 4/19/22.
@@ -29,12 +29,13 @@ class AddButton: UIButton {
     
     override var isEnabled: Bool {
         didSet {
+
             switch isEnabled {
             case true:
-                layer.backgroundColor = UIColor.systemBackground.cgColor
+                self.backgroundColor = .systemBackground
                 layer.borderColor = UIColor.link.cgColor
             case false:
-                layer.backgroundColor =  UIColor(named: "addButtonDisableColor")?.cgColor
+                self.backgroundColor = UIColor(named: "addButtonDisableColor")
                 layer.borderColor = UIColor(named: "addButtonDisableBorderColor")?.cgColor
             }
         }

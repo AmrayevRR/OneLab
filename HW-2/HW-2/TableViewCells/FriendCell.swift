@@ -46,7 +46,7 @@ class FriendCell: UITableViewCell, ConfigurableCell {
     }()
     
     private let addButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = AddButton(type: .system)
         button.setTitle(NSLocalizedString("ADD", comment: ""), for: .normal)
         button.setTitle(NSLocalizedString("ADDED", comment: ""), for: .disabled)
         button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
@@ -54,7 +54,7 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         
         button.setInsets(forContentPadding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), imageTitlePadding: 4)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.link.cgColor
+//        button.layer.borderColor = UIColor.link.cgColor
         
         return button
     }()
@@ -103,13 +103,6 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         usernameLabel.text = data.username
         friendsAmountLabel.text = amountToString(amount: data.friendAmount)
         addButton.isEnabled = !data.isAdded
-        
-        if (data.isAdded) {
-            addButton.layer.borderColor = UIColor.lightGray.cgColor
-        }
-        else {
-            addButton.layer.borderColor = UIColor.link.cgColor
-        }
         
         if data.status == NetworkStatus.online {
             statusView.backgroundColor = .systemGreen

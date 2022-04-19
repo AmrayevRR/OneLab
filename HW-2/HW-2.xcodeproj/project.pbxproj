@@ -18,11 +18,11 @@
 		34ED216F280DCF6200EA78DD /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED216E280DCF6200EA78DD /* ConfigurableCell.swift */; };
 		34ED2172280DD22A00EA78DD /* AddFriendOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2171280DD22A00EA78DD /* AddFriendOptionCell.swift */; };
 		34ED2175280DE00A00EA78DD /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2174280DE00A00EA78DD /* FriendCell.swift */; };
-		34ED2178280EA81B00EA78DD /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2177280EA81B00EA78DD /* UIButtonExtension.swift */; };
 		34ED217B280EBA0000EA78DD /* AddNewFriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED217A280EBA0000EA78DD /* AddNewFriendViewModel.swift */; };
 		34ED217E280EBB7B00EA78DD /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED217D280EBB7B00EA78DD /* Friend.swift */; };
 		34ED2181280EBBC000EA78DD /* AddFriendOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2180280EBBC000EA78DD /* AddFriendOption.swift */; };
 		34ED2188280EBE5D00EA78DD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34ED2186280EBE5D00EA78DD /* Localizable.strings */; };
+		34ED218E280EE77F00EA78DD /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED218D280EE77F00EA78DD /* AddButton.swift */; };
 		34F063BC280D3D0C0092ACDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F063BB280D3D0C0092ACDA /* AppDelegate.swift */; };
 		34F063BE280D3D0C0092ACDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F063BD280D3D0C0092ACDA /* SceneDelegate.swift */; };
 		34F063C0280D3D0C0092ACDA /* MyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F063BF280D3D0C0092ACDA /* MyFeedViewController.swift */; };
@@ -45,7 +45,6 @@
 		34ED216E280DCF6200EA78DD /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		34ED2171280DD22A00EA78DD /* AddFriendOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendOptionCell.swift; sourceTree = "<group>"; };
 		34ED2174280DE00A00EA78DD /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
-		34ED2177280EA81B00EA78DD /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		34ED217A280EBA0000EA78DD /* AddNewFriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFriendViewModel.swift; sourceTree = "<group>"; };
 		34ED217D280EBB7B00EA78DD /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		34ED2180280EBBC000EA78DD /* AddFriendOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendOption.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		34ED2184280EBD5100EA78DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		34ED2187280EBE5D00EA78DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "HW-2/Base.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		34ED218A280EBE9400EA78DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "HW-2/ru.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		34ED218D280EE77F00EA78DD /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		34F063B8280D3D0C0092ACDA /* HW-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F063BB280D3D0C0092ACDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34F063BD280D3D0C0092ACDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				34ED214E280D860400EA78DD /* PadddingLabel.swift */,
-				34ED2177280EA81B00EA78DD /* UIButtonExtension.swift */,
+				34ED218D280EE77F00EA78DD /* AddButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -331,12 +331,12 @@
 				34ED215E280D9E4900EA78DD /* CollectionUser.swift in Sources */,
 				34F063DB280D42880092ACDA /* MyProfileViewController.swift in Sources */,
 				34ED215A280D9DFF00EA78DD /* NetworkStatus.swift in Sources */,
+				34ED218E280EE77F00EA78DD /* AddButton.swift in Sources */,
 				34ED2175280DE00A00EA78DD /* FriendCell.swift in Sources */,
 				34ED2163280D9E9D00EA78DD /* MyFriendsViewModel.swift in Sources */,
 				34ED217B280EBA0000EA78DD /* AddNewFriendViewModel.swift in Sources */,
 				34ED214F280D860400EA78DD /* PadddingLabel.swift in Sources */,
 				34ED2172280DD22A00EA78DD /* AddFriendOptionCell.swift in Sources */,
-				34ED2178280EA81B00EA78DD /* UIButtonExtension.swift in Sources */,
 				34F063D5280D424B0092ACDA /* MyFriendsViewController.swift in Sources */,
 				34ED2167280D9F4F00EA78DD /* AddNewFriendViewController.swift in Sources */,
 				34F063C0280D3D0C0092ACDA /* MyFeedViewController.swift in Sources */,
