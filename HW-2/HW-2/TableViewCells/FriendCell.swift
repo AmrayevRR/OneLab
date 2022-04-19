@@ -65,10 +65,23 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         return button
     }()
     
+    private let statusView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .gray
+        view.layer.borderWidth = 1
+        view.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        return view
+    }()
     
+    private lazy var imageStatusView: UIView = {
+       let view = UIView()
+        view.addSubview(friendImageView)
+        view.addSubview(statusView)
+        return view
+    }()
     
     private lazy var mainStack: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [friendImageView, verticalStack])
+        let stackView = UIStackView(arrangedSubviews: [imageStatusView, verticalStack])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.distribution = .fill
@@ -98,12 +111,22 @@ class FriendCell: UITableViewCell, ConfigurableCell {
             $0.bottom.equalToSuperview().inset(margin)
             $0.width.equalToSuperview().multipliedBy(0.7)
         }
-        mainStack.backgroundColor = .blue
         
-        friendImageView.snp.makeConstraints {
+        imageStatusView.snp.makeConstraints {
             $0.size.equalTo(imageWidth)
         }
+        
+        friendImageView.snp.makeConstraints {
+            $0.size.equalToSuperview()
+        }
         friendImageView.layer.cornerRadius = CGFloat(imageWidth/2)
+        
+        statusView.snp.makeConstraints {
+            $0.size.equalToSuperview().dividedBy(4)
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        statusView.layer.cornerRadius = statusView.layer.frame.width/2
     }
     
     func configure(data: Friend) {
