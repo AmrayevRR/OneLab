@@ -71,13 +71,12 @@ class CollectionViewCell: UICollectionViewCell {
         professionLabel.text = user.profession
         imageView.image = user.image
         
-        if (user.status == NetworkStatus.online) {
+        switch user.status {
+        case NetworkStatus.online:
             statusView.backgroundColor = .systemGreen
-        }
-        else if (user.status == NetworkStatus.recentlyOnline) {
+        case NetworkStatus.recentlyOnline:
             statusView.backgroundColor = .systemYellow
-        }
-        else {
+        default:
             statusView.backgroundColor = .systemGray4
         }
     }

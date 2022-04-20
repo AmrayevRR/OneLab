@@ -102,13 +102,12 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         friendsAmountLabel.text = amountToString(amount: data.friendAmount)
         addButton.isEnabled = !data.isAdded
         
-        if data.status == NetworkStatus.online {
+        switch data.status {
+        case NetworkStatus.online:
             statusView.backgroundColor = .systemGreen
-        }
-        else if data.status == NetworkStatus.recentlyOnline {
+        case NetworkStatus.recentlyOnline:
             statusView.backgroundColor = .systemYellow
-        }
-        else {
+        default:
             statusView.backgroundColor = .systemGray4
         }
     }
@@ -164,8 +163,7 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         var string: String
         if amount < 2000 {
             string = "\(amount)"
-        }
-        else {
+        } else {
             string = "\(Double(amount)/1000.0)K"
         }
         string += " \(NSLocalizedString("Friends", comment: ""))"

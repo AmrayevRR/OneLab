@@ -79,8 +79,7 @@ extension AddNewFriendViewController: UITableViewDelegate {
         if (section == 0) {
             label.text = NSLocalizedString("Add New Contacts", comment: "")
             return label
-        }
-        else {
+        } else {
             label.text = NSLocalizedString("You Might Know Them", comment: "")
             label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
             
