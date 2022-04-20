@@ -10,7 +10,7 @@ import SnapKit
 
 class MyFriendsViewController: UIViewController {
     
-    var viewModel = MyFriendsViewModel()
+    private var viewModel = MyFriendsViewModel()
     
     private var collectionView: UICollectionView?
     
@@ -75,7 +75,6 @@ class MyFriendsViewController: UIViewController {
         }
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
         collectionView.dataSource = self
-        collectionView.delegate = self
         
         collectionView.backgroundColor = .secondarySystemBackground
         
@@ -107,19 +106,9 @@ class MyFriendsViewController: UIViewController {
         let addNewFriendVC = AddNewFriendViewController()
         self.navigationController?.pushViewController(addNewFriendVC, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+//MARK: -UICollectionViewDataSource
 extension MyFriendsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.users.count
@@ -132,8 +121,4 @@ extension MyFriendsViewController: UICollectionViewDataSource {
         
         return cell
     }
-}
-
-extension MyFriendsViewController: UICollectionViewDelegate {
-    
 }

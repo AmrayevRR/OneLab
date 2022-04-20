@@ -12,7 +12,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CollectionViewCell"
     
-    let margin = 10
+    private let margin = 10
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
