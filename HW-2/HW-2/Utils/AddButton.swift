@@ -4,8 +4,6 @@
 //
 //  Created by Ramir Amrayev on 4/19/22.
 //
-
-import Foundation
 import UIKit
 
 class AddButton: UIButton {

@@ -5,8 +5,6 @@
 //  Created by Ramir Amrayev on 4/18/22.
 //
 
-import Foundation
-
 protocol ConfigurableCell {
     associatedtype DataType
     static var reuseIdentifier: String { get }

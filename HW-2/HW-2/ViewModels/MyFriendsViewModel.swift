@@ -4,8 +4,6 @@
 //
 //  Created by Ramir Amrayev on 4/18/22.
 //
-
-import Foundation
 import UIKit
 
 class MyFriendsViewModel {

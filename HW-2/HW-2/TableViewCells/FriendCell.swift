@@ -5,7 +5,6 @@
 //  Created by Ramir Amrayev on 4/19/22.
 //
 
-import Foundation
 import UIKit
 
 typealias FriendCellConfigurator = TableCellConfigurator<FriendCell, Friend>
@@ -54,7 +53,6 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         
         button.setInsets(forContentPadding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), imageTitlePadding: 4)
         button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.link.cgColor
         
         return button
     }()

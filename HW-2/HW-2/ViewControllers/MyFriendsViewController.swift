@@ -20,7 +20,6 @@ class MyFriendsViewController: UIViewController {
         super.viewDidLoad()
         
         initUI()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
