@@ -11,6 +11,11 @@ class AddNewFriendViewController: UIViewController {
     
     private var viewModel = AddNewFriendViewModel()
     
+    private lazy var tableDirector: TableDirector = {
+        let tableDirector = TableDirector(tableView: tableView, items: viewModel.items)
+        return tableDirector
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
            
@@ -22,6 +27,9 @@ class AddNewFriendViewController: UIViewController {
 
         initUI()
         configureTableView()
+        cellActionHandlers()
+        
+        tableDirector.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
@@ -37,68 +45,19 @@ class AddNewFriendViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.separatorStyle = .none
     }
-}
-
-//MARK: -UITableViewDataSource
-extension AddNewFriendViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items[section].count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = viewModel.items[indexPath.section][indexPath.row]
-        tableView.register(type(of: item).cellClass, forCellReuseIdentifier: type(of: item).reuseId)
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId, for: indexPath)
-            
-        item.configure(cell: cell)
-        
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.items.count
-    }
-    
-}
-
-//MARK: -UITableViewDelegate
-extension AddNewFriendViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = PaddingLabel()
-        label.leftInset = 10
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.backgroundColor = .systemBackground
-        label.textColor = UIColor(named: "sectionTextColor")
-        
-        
-        if (section == 0) {
-            label.text = NSLocalizedString("Add New Contacts", comment: "")
-            return label
-        } else {
-            label.text = NSLocalizedString("You Might Know Them", comment: "")
-            label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-            
-            let amountLabel = UILabel()
-            amountLabel.text = "(435)"
-            amountLabel.font = UIFont.systemFont(ofSize: 12)
-            amountLabel.textColor = .systemGray4
-            
-            let headerView = UIStackView(arrangedSubviews: [label, amountLabel])
-            headerView.axis = .horizontal
-            headerView.distribution = .fill
-            headerView.spacing = 4
-            headerView.backgroundColor = .systemBackground
-            
-            return headerView
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+    private func cellActionHandlers() {
+        self.tableDirector.actionProxy
+            .on(action: .didSelect) { (config: FriendCellConfigurator, cell) in
+                print("FriendCell selected")
+            }.on(action: .custom(FriendCell.didTapAddButtonAction)){ (config: FriendCellConfigurator, cell) in
+                
+                var item = config.item
+                item.isAdded = true
+                
+                cell.configure(data: item)
+            }
     }
 }

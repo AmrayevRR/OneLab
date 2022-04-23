@@ -9,6 +9,6 @@ struct Friend {
     let imageName: String
     let username: String
     let friendAmount: Int
-    let isAdded: Bool
+    var isAdded: Bool
     let status: NetworkStatus
 }

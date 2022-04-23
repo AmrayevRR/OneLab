@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		12224CA4FEFDA30927117001 /* Pods_HW_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB0750E58102F9A5FA58EA9 /* Pods_HW_2.framework */; };
+		344D211128147F23007BCA74 /* TableDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344D211028147F23007BCA74 /* TableDirector.swift */; };
+		344D211428147F58007BCA74 /* CellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344D211328147F58007BCA74 /* CellAction.swift */; };
+		344D211728147F82007BCA74 /* CellActionProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344D211628147F82007BCA74 /* CellActionProxy.swift */; };
 		34ED2147280D618400EA78DD /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2146280D618400EA78DD /* CollectionViewCell.swift */; };
 		34ED214F280D860400EA78DD /* PadddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED214E280D860400EA78DD /* PadddingLabel.swift */; };
 		34ED215A280D9DFF00EA78DD /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ED2159280D9DFF00EA78DD /* NetworkStatus.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		344D211028147F23007BCA74 /* TableDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDirector.swift; sourceTree = "<group>"; };
+		344D211328147F58007BCA74 /* CellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAction.swift; sourceTree = "<group>"; };
+		344D211628147F82007BCA74 /* CellActionProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellActionProxy.swift; sourceTree = "<group>"; };
 		34ED2146280D618400EA78DD /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		34ED214E280D860400EA78DD /* PadddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadddingLabel.swift; sourceTree = "<group>"; };
 		34ED2159280D9DFF00EA78DD /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 				34F063C4280D3D140092ACDA /* Assets.xcassets */,
 				34F063C6280D3D140092ACDA /* LaunchScreen.storyboard */,
 				34F063C9280D3D140092ACDA /* Info.plist */,
+				344D211028147F23007BCA74 /* TableDirector.swift */,
+				344D211328147F58007BCA74 /* CellAction.swift */,
+				344D211628147F82007BCA74 /* CellActionProxy.swift */,
 			);
 			path = "HW-2";
 			sourceTree = "<group>";
@@ -334,6 +343,7 @@
 				34ED218E280EE77F00EA78DD /* AddButton.swift in Sources */,
 				34ED2175280DE00A00EA78DD /* FriendCell.swift in Sources */,
 				34ED2163280D9E9D00EA78DD /* MyFriendsViewModel.swift in Sources */,
+				344D211728147F82007BCA74 /* CellActionProxy.swift in Sources */,
 				34ED217B280EBA0000EA78DD /* AddNewFriendViewModel.swift in Sources */,
 				34ED214F280D860400EA78DD /* PadddingLabel.swift in Sources */,
 				34ED2172280DD22A00EA78DD /* AddFriendOptionCell.swift in Sources */,
@@ -341,11 +351,13 @@
 				34ED2167280D9F4F00EA78DD /* AddNewFriendViewController.swift in Sources */,
 				34F063C0280D3D0C0092ACDA /* MyFeedViewController.swift in Sources */,
 				34ED2147280D618400EA78DD /* CollectionViewCell.swift in Sources */,
+				344D211428147F58007BCA74 /* CellAction.swift in Sources */,
 				34ED217E280EBB7B00EA78DD /* Friend.swift in Sources */,
 				34ED2181280EBBC000EA78DD /* AddFriendOption.swift in Sources */,
 				34F063BC280D3D0C0092ACDA /* AppDelegate.swift in Sources */,
 				34ED216F280DCF6200EA78DD /* ConfigurableCell.swift in Sources */,
 				34ED216B280DCF0600EA78DD /* CellConfigurator.swift in Sources */,
+				344D211128147F23007BCA74 /* TableDirector.swift in Sources */,
 				34F063BE280D3D0C0092ACDA /* SceneDelegate.swift in Sources */,
 				34F063D8280D426B0092ACDA /* MyPinsViewController.swift in Sources */,
 			);

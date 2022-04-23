@@ -11,6 +11,8 @@ typealias FriendCellConfigurator = TableCellConfigurator<FriendCell, Friend>
 
 class FriendCell: UITableViewCell, ConfigurableCell {
     
+    static let didTapAddButtonAction = "FriendCellDidTapAddButtonAction"
+    
     private let imageWidth = 50
     private let margin = 8
     
@@ -44,7 +46,7 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         return stackView
     }()
     
-    private let addButton: UIButton = {
+    private lazy var addButton: UIButton = {
         let button = AddButton(type: .system)
         button.setTitle(NSLocalizedString("ADD", comment: ""), for: .normal)
         button.setTitle(NSLocalizedString("ADDED", comment: ""), for: .disabled)
@@ -53,6 +55,8 @@ class FriendCell: UITableViewCell, ConfigurableCell {
         
         button.setInsets(forContentPadding: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4), imageTitlePadding: 4)
         button.layer.borderWidth = 1
+        
+        button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         
         return button
     }()
@@ -157,6 +161,10 @@ class FriendCell: UITableViewCell, ConfigurableCell {
             $0.centerY.equalTo(verticalStack.snp.centerY)
         }
         addButton.layer.cornerRadius = addButton.layer.frame.height/2
+    }
+    
+    @objc private func didTapAddButton() {
+        CellAction.custom(type(of: self).didTapAddButtonAction).invoke(cell: self)
     }
     
     private func amountToString(amount: Int) -> String {
