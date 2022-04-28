@@ -18,7 +18,7 @@ class AddNewFriendViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-           
+        
         return tableView
     }()
 
@@ -52,12 +52,15 @@ class AddNewFriendViewController: UIViewController {
         self.tableDirector.actionProxy
             .on(action: .didSelect) { (config: FriendCellConfigurator, cell) in
                 print("FriendCell selected")
-            }.on(action: .custom(FriendCell.didTapAddButtonAction)){ (config: FriendCellConfigurator, cell) in
+            }.on(action: .custom(FriendCell.didTapAddButtonAction)){ [self] (config: FriendCellConfigurator, cell) in
                 
                 var item = config.item
                 item.isAdded = true
                 
                 cell.configure(data: item)
+                
+                self.tableDirector.tableView.reloadData()
             }
     }
+    
 }
