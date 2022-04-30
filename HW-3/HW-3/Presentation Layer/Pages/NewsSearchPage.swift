@@ -11,7 +11,7 @@ class NewsSearchPage: UIViewController {
 
     private let viewModel: NewsSearchViewModel
     
-    private let tableView: UITableView = {
+    private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = 380
         return tableView

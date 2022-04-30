@@ -12,7 +12,6 @@
 		34D79D45281A9FC6003E4622 /* NewsSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D79D44281A9FC6003E4622 /* NewsSearchPage.swift */; };
 		34E1179928184BCE00D1445C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1179828184BCE00D1445C /* AppDelegate.swift */; };
 		34E1179B28184BCE00D1445C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1179A28184BCE00D1445C /* SceneDelegate.swift */; };
-		34E1179D28184BCE00D1445C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1179C28184BCE00D1445C /* ViewController.swift */; };
 		34E117A028184BCE00D1445C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E1179E28184BCE00D1445C /* Main.storyboard */; };
 		34E117A228184BD700D1445C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34E117A128184BD700D1445C /* Assets.xcassets */; };
 		34E117A528184BD700D1445C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E117A328184BD700D1445C /* LaunchScreen.storyboard */; };
@@ -38,7 +37,6 @@
 		34E1179528184BCE00D1445C /* HW-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E1179828184BCE00D1445C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E1179A28184BCE00D1445C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		34E1179C28184BCE00D1445C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34E1179F28184BCE00D1445C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34E117A128184BD700D1445C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34E117A428184BD700D1445C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				34E117B928184E7200D1445C /* Service Layer */,
 				34E117B428184DB300D1445C /* Core Layer */,
 				34E117B328184D8F00D1445C /* Application Layer */,
-				34E1179C28184BCE00D1445C /* ViewController.swift */,
 				34E1179E28184BCE00D1445C /* Main.storyboard */,
 				34E117A128184BD700D1445C /* Assets.xcassets */,
 				34E117A328184BD700D1445C /* LaunchScreen.storyboard */,
@@ -331,7 +328,6 @@
 				3447E129281AB127005F3E13 /* NewsSearchViewModel.swift in Sources */,
 				34E117BB28184E9C00D1445C /* NewsService.swift in Sources */,
 				34E117E0281894CB00D1445C /* CellActionProxy.swift in Sources */,
-				34E1179D28184BCE00D1445C /* ViewController.swift in Sources */,
 				34E117DC2818942900D1445C /* TableDirector.swift in Sources */,
 				34E117EC2819E36500D1445C /* NewsDetailWebPage.swift in Sources */,
 				34E117BF28184EDD00D1445C /* NewsWrapper.swift in Sources */,

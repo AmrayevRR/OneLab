@@ -37,7 +37,7 @@ class NewsPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "News"
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         bindViewModel()
         layoutUI()
         
@@ -49,7 +49,7 @@ class NewsPage: UIViewController {
     }
     
     private func layoutUI() {
-        navigationController?.view.backgroundColor = .white
+        navigationController?.view.backgroundColor = .systemBackground
         layoutTableView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearchButton))
     }
@@ -69,7 +69,6 @@ class NewsPage: UIViewController {
     
     private func bindViewModel() {
         viewModel.didLoadNews = { [weak self] news in
-            //cellBuilder.buildCells(news
             let cellItems = self?.cellBuilder.reset()
                 .buildCells(with: news)
                 .getConfigurableCells()
@@ -92,5 +91,15 @@ class NewsPage: UIViewController {
     @objc func didTapSearchButton() {
         let newsSearchPage = NewsSearchPage(viewModel: NewsSearchViewModel(newsService: viewModel.getService()))
         navigationController?.pushViewController(newsSearchPage, animated: true)
+    }
+}
+
+extension NewsPage: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > tableView.contentSize.height - 100 {
+            // fetch more data
+            print("fetch more data")
+        }
     }
 }

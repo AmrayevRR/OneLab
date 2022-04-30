@@ -54,7 +54,7 @@ class NewsDetailWebPage: UIViewController {
     }
     
     private func configureNavBar() {
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.isTranslucent = false
     }
 }

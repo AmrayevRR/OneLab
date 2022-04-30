@@ -5,7 +5,6 @@
 //  Created by Ramir Amrayev on 4/27/22.
 //
 
-import Foundation
 import UIKit
 
 enum CellAction: Hashable {

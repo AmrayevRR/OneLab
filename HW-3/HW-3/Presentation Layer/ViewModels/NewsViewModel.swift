@@ -9,6 +9,8 @@ import Foundation
 
 class NewsViewModel {
     private let newsService: NewsService
+    private var currentPage = 0
+    private var news: [New] = []
     
     var didLoadNews: (([New]) -> Void)?
     init(newsService: NewsService) {
@@ -17,7 +19,11 @@ class NewsViewModel {
     
     func getTopHeadLines() {
         newsService.getTopHeadLines(
-            success: { [weak self] news in
+            page: currentPage,
+            success: { [weak self] fetchedNews in
+                self?.news.append(contentsOf: fetchedNews)
+                guard let news = self?.news else { return }
+                self?.currentPage += 1
                 self?.didLoadNews?(news)
             },
             failure: { error in

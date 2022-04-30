@@ -10,17 +10,17 @@ import Alamofire
 import AlamofireImage
 
 protocol NewsService {
-    func getTopHeadLines(success: @escaping ([New]) -> Void, failure: @escaping (Error) -> Void)
+    func getTopHeadLines(page: Int, success: @escaping ([New]) -> Void, failure: @escaping (Error) -> Void)
     func getNews(with searchText: String, success: @escaping ([New]) -> Void, failure: @escaping (Error) -> Void)
 
 }
 
 class NewsServiceImpl: NewsService {
-    func getTopHeadLines(success: @escaping ([New]) -> Void, failure: @escaping (Error) -> Void) {
+    func getTopHeadLines(page: Int, success: @escaping ([New]) -> Void, failure: @escaping (Error) -> Void) {
         let urlString = String(format: "%@top-headlines", EndPoint.baseUrl)
         guard let url = URL(string: urlString) else { return }
         
-        let queryParams: Parameters = ["apiKey": EndPoint.apiKey, "country": EndPoint.country]
+        let queryParams: Parameters = ["apiKey": EndPoint.apiKey, "country": EndPoint.country, "page": page]
         
         AF.request(url, method: .get, parameters: queryParams).responseDecodable { (response: DataResponse<NewsWrapper, AFError>) in
             switch response.result {
