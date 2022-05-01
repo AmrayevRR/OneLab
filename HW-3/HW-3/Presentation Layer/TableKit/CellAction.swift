@@ -34,18 +34,3 @@ extension CellAction {
         NotificationCenter.default.post(name: CellAction.notificationName, object: nil, userInfo: ["data": CellActionEventData(action: self, cell: cell)])
     }
 }
-
-// ScrollView
-
-struct ScrollActionEventData {
-    let action: ScrollAction
-    let scrollView: UIView
-}
-
-struct ScrollAction {
-    static let notificationName = NSNotification.Name("scrollAction")
-    
-    func invoke(scrollView: UIView) {
-        NotificationCenter.default.post(name: ScrollAction.notificationName, object: nil, userInfo: ["scroll_data": ScrollActionEventData(action: self, scrollView: scrollView)])
-    }
-}

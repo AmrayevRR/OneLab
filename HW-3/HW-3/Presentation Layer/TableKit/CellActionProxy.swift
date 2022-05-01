@@ -28,21 +28,3 @@ class CellActionProxy {
         return self
     }
 }
-
-class ScrollActionProxy {
-    private var action: ((UIView) -> Void)?
-    
-    // invoke some action and makes some notification
-    func invoke(scrollView: UIView) {
-        if let action = action {
-            action(scrollView)
-        }
-    }
-    
-    // subscribe to cell action
-    func on(handler: @escaping ((UIScrollView) -> Void)) {
-        action = { scrollView in
-            handler(scrollView as! UIScrollView)
-        }
-    }
-}
