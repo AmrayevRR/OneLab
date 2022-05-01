@@ -9,21 +9,45 @@ import Foundation
 
 class NewsSearchViewModel {
     private let newsService: NewsService
+    private var news: [New] = []
+    private var currentPage = 0
+    private var isLoading = false
     
-    var didLoadNews: (([New]) -> Void)?
+    var didLoadNews: (() -> Void)?
     init(newsService: NewsService) {
         self.newsService = newsService
     }
     
-    func getNews(with searchText: String) {
+    func fetchNews(with searchText: String, isMore: Bool = false) {
+        if isMore {
+            if isLoading {
+                return
+            }
+        } else {
+            currentPage = 0
+        }
+        isLoading = true
         newsService.getNews(
             with: searchText,
+            page: currentPage,
             success: { [weak self] news in
-                self?.didLoadNews?(news)
+                if isMore {
+                    self?.news.append(contentsOf: news)
+                } else {
+                    self?.news = news
+                }
+                self?.currentPage += 1
+                self?.isLoading = false
+                self?.didLoadNews?()
             },
-            failure: { error in
+            failure: { [weak self] error in
+                self?.isLoading = false
                 print(error.localizedDescription.description)
             }
         )
+    }
+    
+    func getNews() -> [New] {
+        return news
     }
 }

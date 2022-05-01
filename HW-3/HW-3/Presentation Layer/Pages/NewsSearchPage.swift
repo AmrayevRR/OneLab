@@ -46,6 +46,7 @@ class NewsSearchPage: UIViewController {
         bindViewModel()
         layoutUI()
         cellActionHandlers()
+        scrollActionHandler()
         
         tableDirector.tableView.reloadData()
         // Do any additional setup after loading the view.
@@ -68,7 +69,8 @@ class NewsSearchPage: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.didLoadNews = { [weak self] news in
+        viewModel.didLoadNews = { [weak self] in
+            guard let news = self?.viewModel.getNews() else { return }
             let cellItems = self?.cellBuilder.reset()
                 .buildCells(with: news)
                 .getConfigurableCells()
@@ -80,7 +82,7 @@ class NewsSearchPage: UIViewController {
     }
     
     private func cellActionHandlers() {
-        self.tableDirector.actionProxy
+        self.tableDirector.cellActionProxy
             .on(action: .didSelect) { (config: NewsCellConfigurator, cell) in
                 let item = config.item
                 let newsDetailWebPage = NewsDetailWebPage(url: URL(string: item.url))
@@ -88,8 +90,18 @@ class NewsSearchPage: UIViewController {
             }
     }
     
-    private func fetchNews(with searchText: String) {
-        viewModel.getNews(with: searchText)
+    private func scrollActionHandler() {
+        self.tableDirector.scrollActionProxy
+            .on { [weak self] scrollView in
+                let position = scrollView.contentOffset.y
+                
+                guard let tableViewContentHeight = self?.tableView.contentSize.height else { return }
+                if position > (tableViewContentHeight - 100 - scrollView.frame.size.height) {
+                    // fetch more data
+                    guard let searchText = self?.searchBar.text else { return }
+                    self?.viewModel.fetchNews(with: searchText, isMore: true)
+                }
+            }
     }
 
 }
@@ -104,7 +116,7 @@ extension NewsSearchPage: UISearchBarDelegate {
         guard let searchText = searchBar.text else { return }
         
         if searchText != "" {
-            fetchNews(with: searchText)
+            viewModel.fetchNews(with: searchText)
         }
     }
 }

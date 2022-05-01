@@ -42,6 +42,7 @@ class NewsPage: UIViewController {
         layoutUI()
         
         cellActionHandlers()
+        scrollActionHandler()
         fetchData()
         
         tableDirector.tableView.reloadData()
@@ -64,11 +65,12 @@ class NewsPage: UIViewController {
     }
     
     private func fetchData() {
-        viewModel.getTopHeadLines()
+        viewModel.fetchTopHeadLines()
     }
     
     private func bindViewModel() {
-        viewModel.didLoadNews = { [weak self] news in
+        viewModel.didLoadNews = { [weak self] in
+            guard let news = self?.viewModel.getNews() else { return }
             let cellItems = self?.cellBuilder.reset()
                 .buildCells(with: news)
                 .getConfigurableCells()
@@ -80,11 +82,24 @@ class NewsPage: UIViewController {
     }
     
     private func cellActionHandlers() {
-        self.tableDirector.actionProxy
-            .on(action: .didSelect) { (config: NewsCellConfigurator, cell) in
+        self.tableDirector.cellActionProxy
+            .on(action: .didSelect) { [weak self] (config: NewsCellConfigurator, cell) in
                 let item = config.item
                 let newsDetailWebPage = NewsDetailWebPage(url: URL(string: item.url))
-                self.navigationController?.pushViewController(newsDetailWebPage, animated: true)
+                self?.navigationController?.pushViewController(newsDetailWebPage, animated: true)
+            }
+    }
+    
+    private func scrollActionHandler() {
+        self.tableDirector.scrollActionProxy
+            .on { [weak self] scrollView in
+                let position = scrollView.contentOffset.y
+                
+                guard let tableViewContentHeight = self?.tableView.contentSize.height else { return }
+                if position > (tableViewContentHeight - 100 - scrollView.frame.size.height) {
+                    // fetch more data
+                    self?.viewModel.fetchTopHeadLines()
+                }
             }
     }
     

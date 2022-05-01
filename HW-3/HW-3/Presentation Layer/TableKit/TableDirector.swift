@@ -16,7 +16,8 @@ class TableDirector: NSObject {
         }
     }
     
-    let actionProxy = CellActionProxy()
+    let cellActionProxy = CellActionProxy()
+    let scrollActionProxy = ScrollActionProxy()
     
     init(tableView: UITableView, items: [CellConfigurator]) {
         self.tableView = tableView
@@ -30,7 +31,10 @@ class TableDirector: NSObject {
     
     @objc fileprivate func onActionEvent(notification: Notification) {
         if let eventData = notification.userInfo?["data"] as? CellActionEventData, let cell = eventData.cell as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) {
-            actionProxy.invoke(action: eventData.action, cell: cell, configurator: self.items[indexPath.row])
+            cellActionProxy.invoke(action: eventData.action, cell: cell, configurator: self.items[indexPath.row])
+        }
+        if let eventData = notification.userInfo?["scroll_data"] as? ScrollActionEventData, let scrollView = eventData.scrollView as? UIScrollView {
+            scrollActionProxy.invoke(scrollView: scrollView)
         }
     }
     
@@ -46,12 +50,16 @@ extension TableDirector: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        self.actionProxy.invoke(action: .didSelect, cell: cell, configurator: cellConfig)
+        self.cellActionProxy.invoke(action: .didSelect, cell: cell, configurator: cellConfig)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let cellConfig = self.items[indexPath.row]
-        self.actionProxy.invoke(action: .willDisplay, cell: cell, configurator: cellConfig)
+        self.cellActionProxy.invoke(action: .willDisplay, cell: cell, configurator: cellConfig)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.scrollActionProxy.invoke(scrollView: scrollView)
     }
 }
 

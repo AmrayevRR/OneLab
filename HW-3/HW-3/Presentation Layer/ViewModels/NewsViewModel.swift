@@ -9,27 +9,37 @@ import Foundation
 
 class NewsViewModel {
     private let newsService: NewsService
-    private var currentPage = 0
+    private var currentPage = 1
     private var news: [New] = []
+    private var isLoading = false
     
-    var didLoadNews: (([New]) -> Void)?
+    var didLoadNews: (() -> Void)?
     init(newsService: NewsService) {
         self.newsService = newsService
     }
     
-    func getTopHeadLines() {
+    func fetchTopHeadLines() {
+        if isLoading {
+            return
+        }
+        isLoading = true
         newsService.getTopHeadLines(
             page: currentPage,
             success: { [weak self] fetchedNews in
                 self?.news.append(contentsOf: fetchedNews)
                 self?.currentPage += 1
-                guard let news = self?.news else { return }
-                self?.didLoadNews?(news)
+                self?.isLoading = false
+                self?.didLoadNews?()
             },
-            failure: { error in
+            failure: { [weak self] error in
                 print(error.localizedDescription.description)
+                self?.isLoading = false
             }
         )
+    }
+    
+    func getNews() -> [New] {
+        return news
     }
     
     func getService() -> NewsService {
