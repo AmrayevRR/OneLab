@@ -22,8 +22,8 @@ class NewsViewModel {
             page: currentPage,
             success: { [weak self] fetchedNews in
                 self?.news.append(contentsOf: fetchedNews)
-                guard let news = self?.news else { return }
                 self?.currentPage += 1
+                guard let news = self?.news else { return }
                 self?.didLoadNews?(news)
             },
             failure: { error in

@@ -155,7 +155,6 @@
 			children = (
 				34D79D43281A9F77003E4622 /* ViewModels */,
 				34D79D42281A9F6A003E4622 /* Pages */,
-				34E117E52819C0D400D1445C /* Utils */,
 				34E117DA2818940D00D1445C /* TableKit */,
 				34E117C9281887AF00D1445C /* Cell */,
 			);
@@ -182,13 +181,6 @@
 				34E117E22818950500D1445C /* CellAction.swift */,
 			);
 			path = TableKit;
-			sourceTree = "<group>";
-		};
-		34E117E52819C0D400D1445C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		74CB9757FBB5AFF1894B89F0 /* Pods */ = {
