@@ -10,7 +10,7 @@ import Foundation
 class NewsSearchViewModel {
     private let newsService: NewsService
     private var news: [New] = []
-    private var currentPage = 0
+    private var currentPage = 1
     private var isLoading = false
     
     var didLoadNews: (() -> Void)?
@@ -24,7 +24,7 @@ class NewsSearchViewModel {
                 return
             }
         } else {
-            currentPage = 0
+            currentPage = 1
         }
         isLoading = true
         newsService.getNews(

@@ -17,7 +17,7 @@ class ScrollActionProxy {
         }
     }
     
-    // subscribe to cell action
+    // subscribe to scroll action
     func on(handler: @escaping ((UIScrollView) -> Void)) {
         action = { scrollView in
             handler(scrollView as! UIScrollView)
